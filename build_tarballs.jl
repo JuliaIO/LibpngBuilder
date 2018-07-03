@@ -30,7 +30,7 @@ platforms = [
     Linux(:x86_64, :glibc),
     Linux(:aarch64, :glibc),
     #Linux(:armv7l, :glibc, :eabihf),
-    Linux(:powerpc64le, :glibc),
+    #Linux(:powerpc64le, :glibc),
     Linux(:i686, :musl),
     Linux(:x86_64, :musl),
     Linux(:aarch64, :musl),
