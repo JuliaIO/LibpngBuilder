@@ -19,10 +19,12 @@ cd build/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
 make -j${ncore}
 make install
+echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/destdir/tmp
     cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
+    echo reolved symbolic links
     rm -r ${WORKSPACE}/destdir/lib
     mv ${WORKSPACE}/destdir/tmp ${WORKSPACE}/destdir/lib
     ls ${WORKSPACE}/destdir/lib
