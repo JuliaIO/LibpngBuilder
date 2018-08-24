@@ -19,6 +19,15 @@ cd build/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
 make -j${ncore}
 make install
+
+if [[ ${target} == *-w64-mingw* ]]; then
+    mkdir ${WORKSPACE}/destdir/tmp
+    cp -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
+    rm -r ${WORKSPACE}/destdir/lib
+    mv ${WORKSPACE}/destdir/tmp ${WORKSPACE}/destdir/lib
+    ls ${WORKSPACE}/destdir/lib
+fi
+
 exit
 
 """
