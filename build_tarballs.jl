@@ -22,7 +22,7 @@ make install
 
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/destdir/tmp
-    cp -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
+    cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
     rm -r ${WORKSPACE}/destdir/lib
     mv ${WORKSPACE}/destdir/tmp ${WORKSPACE}/destdir/lib
     ls ${WORKSPACE}/destdir/lib
