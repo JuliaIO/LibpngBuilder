@@ -23,6 +23,7 @@ echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/destdir/tmp
+    ls -R
     cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
     echo reolved symbolic links
     rm -r ${WORKSPACE}/destdir/lib
