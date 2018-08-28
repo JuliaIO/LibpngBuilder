@@ -22,7 +22,7 @@ echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/tmp
-    ls -Rl
+    ls $prefix -Rl
     cp -r -L $prefix/* ${WORKSPACE}/tmp
     echo collapsed symbolic links
     rm -r $prefix
