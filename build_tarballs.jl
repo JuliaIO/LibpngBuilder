@@ -11,6 +11,7 @@ sources = [
 
 # Bash recipe for building across all platforms
 script = raw"""
+echo [ ***** Start Build! *****]
 cd $WORKSPACE/srcdir
 cd $WORKSPACE/srcdir
 cd libpng-1.6.31/
@@ -42,6 +43,7 @@ exit
 # platforms are passed in on the command line
 platforms = supported_platforms()
 @show platforms
+platforms = [Windows(:x86_64)]
 
 # The products that we will ensure are always built
 products(prefix) = [
