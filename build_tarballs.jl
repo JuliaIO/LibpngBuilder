@@ -22,6 +22,7 @@ make install
 echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
+    echo $prefix
     mkdir ${WORKSPACE}/destdir/tmp
     ls -R
     cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
@@ -38,6 +39,7 @@ exit
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = supported_platforms()
+@show platforms
 
 # The products that we will ensure are always built
 products(prefix) = [
