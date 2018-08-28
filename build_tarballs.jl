@@ -11,8 +11,6 @@ sources = [
 
 # Bash recipe for building across all platforms
 script = raw"""
-echo [ ***** Start Build! *****]
-cd $WORKSPACE/srcdir
 cd $WORKSPACE/srcdir
 cd libpng-1.6.31/
 mkdir build
@@ -23,16 +21,13 @@ make install
 echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
-    echo $prefix
-    echo __sep__
-    pwd
-    mkdir ${WORKSPACE}/destdir/tmp
-    ls -R
-    cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
-    echo reolved symbolic links
-    rm -r ${WORKSPACE}/destdir/lib
-    mv ${WORKSPACE}/destdir/tmp ${WORKSPACE}/destdir/lib
-    ls ${WORKSPACE}/destdir/lib
+    mkdir ${WORKSPACE}/tmp
+    ls -Rl
+    cp -r -L $prefix/* ${WORKSPACE}/tmp
+    echo collapsed symbolic links
+    rm -r $prefix
+    mv ${WORKSPACE}/tmp $prefix
+    ls $prefix -Rl
 fi
 
 exit
@@ -42,8 +37,8 @@ exit
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = supported_platforms()
-@show platforms
 platforms = [Windows(:x86_64)]
+@show platforms
 
 # The products that we will ensure are always built
 products(prefix) = [
