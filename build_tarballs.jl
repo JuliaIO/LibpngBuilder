@@ -23,6 +23,7 @@ echo installation complete
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/tmp
     ls $prefix -Rl
+    cp $prefix/bin/libpng16.dll $prefix/lib # fix broken symlink
     cp -r -L $prefix/* ${WORKSPACE}/tmp
     echo collapsed symbolic links
     rm -r $prefix
