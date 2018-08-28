@@ -18,17 +18,13 @@ cd build/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
 make -j${ncore}
 make install
-echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
     mkdir ${WORKSPACE}/tmp
-    ls $prefix -Rl
     mv $prefix/lib/libpng.dll.a $prefix/bin # fix broken symlink
     cp -r -L $prefix/* ${WORKSPACE}/tmp
-    echo collapsed symbolic links
     rm -r $prefix
     mv ${WORKSPACE}/tmp $prefix
-    ls $prefix -Rl
 fi
 
 exit
@@ -38,8 +34,6 @@ exit
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = supported_platforms()
-platforms = [Windows(:x86_64)]
-@show platforms
 
 # The products that we will ensure are always built
 products(prefix) = [
