@@ -23,6 +23,8 @@ echo installation complete
 
 if [[ ${target} == *-w64-mingw* ]]; then
     echo $prefix
+    echo __sep__
+    pwd
     mkdir ${WORKSPACE}/destdir/tmp
     ls -R
     cp -r -L ${WORKSPACE}/destdir/lib/* ${WORKSPACE}/destdir/tmp
