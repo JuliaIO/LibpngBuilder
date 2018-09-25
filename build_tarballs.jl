@@ -16,9 +16,11 @@ cd $WORKSPACE/srcdir
 cd libpng-1.6.31/
 mkdir build
 cd build/
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
+mkdir out/
+cmake -DCMAKE_INSTALL_PREFIX=$(pwd)/out/ -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
 make -j${ncore}
 make install
+cp -rvL out/* $prefix/
 exit
 
 """
