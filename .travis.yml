@@ -1,3 +1,4 @@
+
 language: julia
 os:
   - linux
@@ -16,9 +17,11 @@ env:
     - BINARYBUILDER_DOWNLOADS_CACHE=downloads
     - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
+
+# Before anything else, get the latest versions of things
 before_script:
-  - julia -e 'import Pkg; Pkg.add(Pkg.PackageSpec(url="https://github.com/JuliaPackaging/BinaryBuilder.jl", rev="master"))'
-  - julia -e 'import Pkg; Pkg.add("BinaryProvider")'
+  - julia -e 'using Pkg; pkg"add BinaryBuilder BinaryProvider"'
+
 script:
   - julia build_tarballs.jl
 
