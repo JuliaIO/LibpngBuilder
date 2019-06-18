@@ -18,15 +18,6 @@ cd build/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain ..
 make -j${ncore}
 make install
-
-if [[ ${target} == *-w64-mingw* ]]; then
-    mkdir ${WORKSPACE}/tmp
-    mv $prefix/lib/libpng.dll.a $prefix/bin # fix broken symlink
-    cp -r -L $prefix/* ${WORKSPACE}/tmp
-    rm -r $prefix
-    mv ${WORKSPACE}/tmp $prefix
-fi
-
 exit
 
 """
