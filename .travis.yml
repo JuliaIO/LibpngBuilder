@@ -35,5 +35,5 @@ deploy:
     file: products/*
     skip_cleanup: true
     on:
-        repo: SimonDanisch/LibpngBuilder
+        repo: JuliaIO/LibpngBuilder
         tags: true
